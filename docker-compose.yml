@@ -1,0 +1,40 @@
+
+version: '3.8'
+
+services:
+  app:
+    container_name: dpas-govtech-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_URL=postgresql://postgres:password@db:5432/dpas_govtech
+    depends_on:
+      - db
+    networks:
+      - app-network
+
+  db:
+    container_name: dpas-govtech-db
+    image: postgres:15-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=dpas_govtech
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  postgres_data:

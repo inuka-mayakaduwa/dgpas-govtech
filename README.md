@@ -1,36 +1,121 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📄 README: Simple Digital Permit Application System (DPAS) for GovTech Assestment
 
-## Getting Started
+## 🚀 Project Overview
 
-First, run the development server:
+This is a full-stack Digital Permit Application System built as a technical assessment. It features a Next.js App Router frontend and backend, using Prisma for database orchestration and Zod for robust schema validation.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### Tech Stack
+
+* **Framework:** Next.js (App Router)
+* **Database:** PostgreSQL via Prisma ORM
+* **Validation:** Zod (Server & Client side)
+* **UI Components:** Shadcn/UI (Radix UI) & Tailwind CSS
+* **State Management:** React Hook Form
+
+---
+
+## 🛠️ Setup & Installation
+
+### Prerequisites
+
+* Node.js (v18+)
+* PostgreSQL instance
+* `pnpm` installed (`npm install -g pnpm`)
+
+### 1. Environment Variables
+
+Create a `.env` file in the root directory:
+
+```env
+DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DATABASE"
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Installation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+pnpm install
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
 
-## Learn More
+### 3. Database Migration
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+# Apply migrations to your database
+pnpm prisma migrate deploy
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# (Optional) Generate Prisma client if not triggered
+pnpm prisma generate
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
 
-## Deploy on Vercel
+### 4. Running the Application
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+pnpm dev
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+
+The application will be available at `http://localhost:3000`.
+
+---
+
+
+Here is the rewritten **Usage of Tools / AI** section for your README. I’ve polished the language to sound professional while accurately reflecting your specific workflow and the "Anti Gravity" editor choice.
+
+---
+
+### 🧠 Usage of Tools & AI
+
+This project was developed using Anti Gravity as the primary code editor. The architectural design, including the database schema, API payload structures, and expected response models, was designed entirely by me to meet the specific requirements of the Digital Economy initiative.
+
+**AI assistance (ChatGPT and Gemini) was utilized in the following areas:**
+
+* **Logic Implementation:** While the business logic and system flow were my original designs, I used AI to generate the boilerplate for specific helper functions and to accelerate the coding process.
+* **Troubleshooting:** I encountered specific import and compatibility issues with the latest version of **Prisma (v7.4.1)**. I leveraged AI tools to debug these dependency conflicts and ensure the `@prisma/client` integrated correctly with the Next.js environment.
+* **UI Scaffolding:** AI helped in quickly generating the base structures for the Shadcn components to maintain a consistent, mobile-friendly layout.
+
+
+* **Tech Stack Selection:** I independently chose the tech stack (Next.js, Prisma, Zod, and Tailwind) since they are modern, widely accepted and they are technologies I am famillier with.
+
+---
+
+
+
+
+### 🐳 Docker Deployment (If needed)
+
+You can deploy the application using Docker and Docker Compose.
+
+#### Prerequisites
+
+*   Docker
+*   Docker Compose
+
+#### Steps
+
+1.  **Build and Start the Containers**
+
+    ```bash
+    docker-compose up -d --build
+    ```
+
+    This will start the Next.js application on port `3000` and a PostgreSQL database on port `5432`.
+
+2.  **Run Database Migrations**
+
+    Once the containers are running, you need to apply the database migrations.
+
+    ```bash
+    docker-compose exec app npx prisma migrate deploy
+    ```
+
+3.  **Access the Application**
+
+    Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+#### Stopping the Containers
+
+```bash
+docker-compose down
+```
