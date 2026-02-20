@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createPermitSchema } from '@/validators/permitSchema';
 import { permitService } from '@/services/permitService';
-import { PermitStatus } from '@prisma/client';
+import { PermitStatus } from '@/types';
 import { AppError } from '@/lib/errors';
 import { z } from 'zod';
 
