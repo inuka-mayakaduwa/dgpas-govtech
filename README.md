@@ -69,6 +69,14 @@ Here is the rewritten **Usage of Tools / AI** section for your README. I’ve po
 
 This project was developed using Anti Gravity as the primary code editor. The architectural design, including the database schema, API payload structures, and expected response models, was designed entirely by me to meet the specific requirements of the Digital Economy initiative.
 
+
+### Assumtions.
+
+Citiznen knows their CitizenID.
+Example permit types are hard coded.
+
+
+
 **AI assistance (ChatGPT and Gemini) was utilized in the following areas:**
 
 * **Logic Implementation:** While the business logic and system flow were my original designs, I used AI to generate the boilerplate for specific helper functions and to accelerate the coding process.
